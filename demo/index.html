@@ -9,8 +9,34 @@
       */
     </script>
     <link rel="import" href="demo-element.html">
+
+    <custom-style>
+      <style>
+        /* Define a document-wide default—will not override a :host rule in  */
+        /* Comment --icon-toggle-outline-color demo-element.html to make this work*/
+        html {
+          --icon-toggle-outline-color: red;
+        }
+        /* Override the value specified in demo-element */
+        demo-element {
+          --icon-toggle-pressed-color: blue;
+        }
+        /* This rule does not work! */
+        body {
+          --icon-toggle-color: purple;
+        }
+      </style>
+    </custom-style>
   </head>
   <body>
-    <demo-element></demo-element>
+    <demo-element>
+      <custom-style>
+        <style>
+          // Here it works
+          body {
+            --icon-toggle-color: purple;
+          }
+        </style>
+    </demo-element>
   </body>
 </html>
